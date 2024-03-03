@@ -3,7 +3,7 @@ services:
   solar-mqtt2influxdb:
     # To build from source, replace 'image: xxxxxxxxxxx' with 'build: .'
     # build: .
-    image: localhost/solar-mqtt2influxdb:alpine-latest
+    image: localhost/solar-mqtt2influxdb:python-latest
 
     # Always pull the image
     #pull_policy: always
@@ -21,8 +21,8 @@ services:
       - ./config/chargers.yml:/opt/app/conf/battery-charger.yml:ro
 
     # Map the following ports to provide outside access (hostport:containerport)
-    #ports:
-    #  - 5000:5000
+    ports:
+      - 5000:5000
 
     # Specify podman/docker network to use
     networks:
@@ -37,10 +37,10 @@ services:
 
     # Set any environmental variables
     environment:
-       - APP_GIT_REPOSITORY=https://github.com/luckylinux/solar-mqtt2influxdb.git
-       - APP_GIT_BRANCH=main
-       - APP_GIT_TAG=
-       - APP_GIT_COMMIT=
+#       - APP_GIT_REPOSITORY=https://github.com/luckylinux/solar-mqtt2influxdb.git
+#       - APP_GIT_BRANCH=main
+#       - APP_GIT_TAG=
+#       - APP_GIT_COMMIT=
        - LOG_LEVEL=DEBUG
 
     # Specify your user ID and group ID. You can find this by running `id -u` and `id -g`
