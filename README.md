@@ -1,2 +1,2 @@
-# solar-forwarder
-Python forwarder of MQTT Data to InfluxDB (mqtt2influx)
+# solar-mqtt2influxdb
+Python forwarder of MQTT Data to InfluxDB (mqtt2influxdb)
