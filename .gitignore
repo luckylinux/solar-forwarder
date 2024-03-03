@@ -120,7 +120,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+#.env # This MUST be committed to the git repository, as it contains important system environment variables
 .venv
 env/
 venv/
