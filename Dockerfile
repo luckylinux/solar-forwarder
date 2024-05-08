@@ -1,18 +1,28 @@
 FROM python:3.12-alpine
-RUN mkdir /opt/app
-WORKDIR /opt/app
-COPY requirements.txt requirements.txt
+
+# App Path
+ARG APP_PATH="/opt/app"
+
+# Create Directory for App
+RUN mkdir -p "${APP_PATH}"
+
+# Change Directory
+WORKDIR "${APP_PATH}"
+
+# Copy Sources
+COPY app/ "${APP_PATH}"
+
+# Copy other Files
+COPY README.md "${APP_PATH}"
 
 # Install required Packages
-RUN pip install -r requirements.txt
+RUN --mount=type=cache,mode=0777,target=/var/lib/pip,sharing=locked \
+    pip install --cache-dir /var/lib/pip -r "${APP_PATH}/requirements.txt"
 
 # Export Web Port
 EXPOSE 5000
 
-# Copy and Execute Script for Installation and Initialization of App
-#COPY . .
-COPY app/* .
-COPY README.md .
+# Execute Script for Installation and Initialization of App
 CMD ["python", "-u", "app.py"]
 
 # Entrypoint does NOT work with python images

@@ -8,8 +8,8 @@ name=$(cat ./name.txt)
 
 # Options
 # Use --no-cache when e.g. updating docker-entrypoint.sh and images don't get updated as they should
-#opts=""
-opts="--no-cache"
+opts=""
+#opts="--no-cache"
 
 # Base Image
 # "Python"
